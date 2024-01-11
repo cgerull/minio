@@ -1,0 +1,12 @@
+apiVersion: v2
+name: minio-operator
+description: Kubernetes operator minio tenants
+type: application
+
+version: 5.0.11
+
+appVersion: "5.0.11"
+dependencies:
+  - name: operator
+    repository: https://operator.min.io
+    version: 5.0.11

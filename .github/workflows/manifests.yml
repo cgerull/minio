@@ -1,0 +1,26 @@
+---
+name: Kubernetes manifests
+
+on:
+  pull_request:
+    paths:
+      - "charts/**"
+      - "deploy**"
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+    steps:
+      - name: Check out code
+        uses: actions/checkout@master
+      - name: Generate kubernets manifests
+        run: bash ./.ci-scripts/build/generate-manifests.sh minio-operator all
+      - name: Pushback changes
+        uses: stefanzweifel/git-auto-commit-action@v5
