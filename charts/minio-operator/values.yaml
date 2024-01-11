@@ -1,11 +1,14 @@
-replicaCount: 1
+operator:
+  operator:
+    replicaCount: 2
 
-ingress:
-  enabled: false
-  ingressClassName: ""
-  labels: { }
-  annotations: { }
-  tls: [ ]
-  host: minio-operator.dieren.gerull.nl
-  path: /
-  pathType: Prefix
+  console:
+    ingress:
+      enabled: false
+      ingressClassName: ""
+      labels: { }
+      annotations: { }
+      tls: [ ]
+      host: minio-operator.dieren.gerull.nl
+      path: /
+      pathType: Prefix

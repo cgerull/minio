@@ -1,11 +1,16 @@
-replicaCount: 1
+# Umbrella charts required (sub-) chart name
+operator:
+  operator:
+    replicaCount: 1
 
-ingress:
-  enabled: true
-  ingressClassName: ""
-  labels: { }
-  annotations: { }
-  tls: [ ]
-  host: minio-operator.dieren.gerull.nl
-  path: /
-  pathType: Prefix
+  console:
+    ingress:
+      enabled: true
+      ingressClassName: ""
+      labels: { }
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: web
+      tls: [ ]
+      host: minio-operator.dieren.gerull.nl
+      path: /
+      pathType: Prefix

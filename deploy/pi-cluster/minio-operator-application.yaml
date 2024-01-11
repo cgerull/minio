@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minio-operator
+  namespace: argocd
+spec:
+  project: infrastructure
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      allowEmpty: true
+ 
+  source:
+    repoURL: https://github.com/cgerull/minio.git
+    targetRevision: HEAD
+    path: kubernetes/pi-cluster
+ 
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: minio-operator
