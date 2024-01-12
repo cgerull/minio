@@ -2,6 +2,10 @@
 name: Kubernetes manifests
 
 on:
+  push:
+    paths:
+      - "charts/**"
+      - "deploy**"
   pull_request:
     paths:
       - "charts/**"
